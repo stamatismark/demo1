@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Set grades</title>
+</head>
+
+
+<body>
+
+<div class="container">
+
+  <form 
+  action="#" 
+  th:action="@{/prof/saveGrades}" th:object="${thesis}" method="post">
+    <h3>Set grades</h3>
+    <table>
+    <tr><td>Implementation grade</td><td><input type="text" th:field="*{implementationGrade}" th:value="*{implementationGrade}" /> </td></tr>
+     <tr><td>Presentation  grade</td><td><input type="text" th:field="*{presentationGrade}" th:value="*{presentationGrade}" /> </td></tr>
+     <tr><td>Report grade</td><td><input type="text" th:field="*{reportGrade}" th:value="*{reportGrade}" /> </td></tr>
+     <tr><td></td><td><input type="hidden" th:field="*{id}" th:value="*{id}" /> </td></tr>
+     <tr><td>Total grade</td><td><input type="text" th:field="*{totalGrade}" th:value="*{totalGrade}" /> </td></tr>
+     </table>
+    <button type="submit" class="btn btn-info col-3">Set grades</button> 
+    
+    <a th:href="@{/prof/reqAssignSubj}" class="btn btn-primary col-3"> Cancel</a>
+    <br/><br/>
+    <span th:utext="${errorMessage}"></span>
+</form>
+</body>
+</html>

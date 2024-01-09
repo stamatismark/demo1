@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>List of assigned theses</title>
+</head>
+
+
+<body>
+
+<div class="container">
+
+<h3>List of assigned theses</h3>
+	<table class="table table-striped border-1">
+	<tr><td><h4>Title</td><td><h4>Full name</td><td><h4>Implementation</td><td><h4>Presentation</td><td><h4>Report</td><td><h4>Total grade</td></tr>
+	<tr th:each="thesis: ${theses}">
+	    <td th:text="${thesis.subject.title}" />
+	    <td th:text="${thesis.student.fullName}" />
+	    <td th:text="${thesis.implementationGrade}" />
+	    <td th:text="${thesis.presentationGrade}" />
+	    <td th:text="${thesis.reportGrade}" />
+	    <td th:text="${thesis.totalGrade}" />
+	<td><a th:href="@{'/prof/setGrade/' + ${thesis.id}}" class="btn btn-primary col-10"> Set grade</a></td>
+	
+	<td><a th:href="@{'/prof/calculateGrade/' + ${thesis.id}}" class="btn btn-primary col-10"> Calculate grade</a></td>
+	</tr>
+	</table>
+	<a th:href="@{/prof/dashboard}" class="btn btn-primary col-2"> Cancel</a>
+</body>
+</html>

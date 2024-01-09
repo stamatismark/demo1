@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Subject description</title>
+</head>
+
+
+<body>
+
+<div class="container">
+<form 
+  action="#" 
+  th:action="@{/stud/apply}" th:object="${subject}" method="post">
+    <h3>Description of subject</h3>
+    <table class="table table-striped border-1">
+	<tr><td><h2>Title</td><td><h2>Objectives</td>
+	
+	<tr>
+	    <td th:text="Title" />
+	    <td th:text="${subject.title}" />
+	</tr>
+	<tr>
+	    <td th:text="Objectives" />
+	    <td th:text="${subject.objectives}" />
+	</tr>
+	<tr>
+	    <td th:text="Professor" />
+	    <td th:text="${subject.professor.fullName}" />
+	</tr>
+	<tr>
+	    <td th:text="Specialty" />
+	    <td th:text="${subject.professor.specialty}" />
+	</tr>
+	<tr>
+	    <input type="hidden" th:field="*{id}" />
+	</tr>
+	</table>
+	
+    <button type="submit" class="btn btn-info col-2">Apply</button> 
+    
+    <a th:href="@{/stud/reqAvailSubj}" class="btn btn-primary col-2"> Cancel</a>
+
+    <p><h5><span th:utext="${successMessage}"></span>
+    <p><h5><span th:utext="${errorMessage}"></span>
+    <p>
+    <p>
+</form>
+
+
+</body>
+</html>

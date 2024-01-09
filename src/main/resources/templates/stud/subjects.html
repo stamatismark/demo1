@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Professor subjects</title>
+</head>
+
+
+<body>
+
+<div class="container">
+
+<h3>List of subjects</h3>
+	<table class="table table-striped border-1">
+	<tr><td><h2>Title</td><td><h2>Action</td>
+	<tr th:each="subject: ${professorSubjects}">
+	    <td th:text="${subject.title}" />
+	    <td><a th:href="@{'/stud/description/' + ${subject.id}}" class="btn btn-primary col-5"> Description</a></td>
+	</tr>
+	</table>
+	<a th:href="@{/stud/dashboard}" class="btn btn-primary col-2"> Cancel</a>
+</body>
+</html>

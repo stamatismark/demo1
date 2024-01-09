@@ -1,0 +1,15 @@
+package com.example.demo.model.strategies;
+
+import com.example.demo.model.Application;
+
+public class FewestCoursesStrategy extends TemplateStrategyAlgorithm {
+	public FewestCoursesStrategy() {
+		
+	}
+	@Override
+	protected int compareApplications(Application a1, Application a2) {
+		// TODO Auto-generated method stub
+		return a1.compare(a2, "courses");
+	}
+
+}

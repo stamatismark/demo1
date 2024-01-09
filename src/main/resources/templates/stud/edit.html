@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Edit profile info</title>
+</head>
+
+
+<body>
+
+<div class="container">
+
+  <form 
+  action="#" 
+  th:action="@{/stud/saveStudentProfile}" th:object="${student}" method="post">
+    <h3>Set profile info</h3>
+    <table>
+    <tr><td>Full name</td><td><input type="text" th:field="*{fullName}" th:value="*{fullName}" /> </td></tr>
+    <tr><td>Year of studies </td><td><input type="text" th:field="*{yearOfStudies}" th:value="*{yearOfStudies}" /> </td></tr>
+    <tr><td>Average grade </td><td><input type="text" th:field="*{averageGrade}" th:value="*{averageGrade}" /> </td></tr>
+    <tr><td>Remaining courses</td><td><input type="text" th:field="*{numberOfRemainingCourses}" th:value="*{numberOfRemainingCourses}" /> </td></tr>
+     <tr><td></td><td><input type="hidden" th:field="*{id}" th:value="*{id}" /> </td></tr>
+    </table>
+    <button type="submit" class="btn btn-info col-2">Set info</button> 
+    
+    <a th:href="@{/stud/dashboard}" class="btn btn-primary col-2"> Cancel</a>
+    
+    <span th:utext="${errorMessage}"></span>
+</form>
+</body>
+</html>

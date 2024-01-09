@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>List of subjects</title>
+</head>
+
+
+<body>
+
+<div class="container">
+<form 
+  action="#" 
+  th:action="@{/prof/saveSubject}" th:object="${subjectNew}" method="post">
+    <h3>List of subjects</h3>
+    <input type="text" th:field="*{title}" th:placeholder="Title" /> <br/><br/>
+     <input type="text" th:field="*{objectives}" th:placeholder="Objectives" /> <br/><br/>
+    
+    <button type="submit" class="btn btn-info col-2">Add subject</button> 
+    
+    <a th:href="@{/prof/dashboard}" class="btn btn-primary col-2"> Cancel</a>
+
+    
+    <p><h5><span th:utext="${errorMessage}"></span>
+    <p>
+    <p>
+</form>
+	<table class="table table-striped border-1">
+	<tr><td><h2>Title</td><td><h2>Objectives</td><td><h2>Action</td><td>
+	<tr th:each="subject: ${professorSubjects}">
+	    <td th:text="${subject.title}" />
+	    <td th:text="${subject.objectives}" />
+	    <td><a th:href="@{'/prof/delete/' + ${subject.id}}" class="btn btn-primary col-5"> Delete</a></td>
+	    <td><a th:href="@{'/prof/applications/' + ${subject.id}}" class="btn btn-primary col-5"> Applications</a></td>
+	</tr>
+	</table>
+
+</body>
+</html>

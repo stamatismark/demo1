@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>List of applications</title>
+</head>
+
+
+<body>
+
+<div class="container">
+
+<h3>List of applications</h3>
+	<table class="table table-striped border-1">
+	<tr><td><h2>Full name</td><td><h2>Grade</td><td><h2>Remaining courses</td><td><h2>Year of studies</td>
+	<tr th:each="application1: ${applications}">
+	    <td th:text="${application1.student.fullName}" />
+	    <td th:text="${application1.student.averageGrade}" />
+	    <td th:text="${application1.student.numberOfRemainingCourses}" />
+	    <td th:text="${application1.student.yearOfStudies}" />
+	</tr>
+	<tr>
+	<td><a th:href="@{'/prof/assign/random/' + ${subject.id}}" class="btn btn-primary col-10"> Assign by random</a></td>
+	<td><a th:href="@{'/prof/assign/avg/' + ${subject.id}}" class="btn btn-primary col-10"> Assign by avg</a></td>
+	<td><a th:href="@{'/prof/assign/courses/' + ${subject.id}}" class="btn btn-primary col-10"> Assign by courses</a></td>
+	<td><a th:href="@{/prof/reqAvailSubj}" class="btn btn-primary col-10"> Cancel</a></td>
+	</tr>
+	</table>
+</body>
+</html>

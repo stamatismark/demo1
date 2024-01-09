@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Edit profile info</title>
+</head>
+
+
+<body>
+
+<div class="container">
+
+  <form 
+  action="#" 
+  th:action="@{/prof/saveProfessorProfile}" th:object="${professor}" method="post">
+    <h3>Set profile info</h3>
+    <table>
+    <tr><td>Full name</td><td><input type="text" th:field="*{fullName}" th:value="${professor.fullName}" /> </td></tr>
+    <tr><td>Specialty </td><td><input type="text" th:field="*{specialty}" th:value="*{specialty}" /> </td></tr>
+    <tr><td> </td><td><input type="hidden" th:field="*{id}" th:value="*{id}" /> <br/><br/>
+     <tr><td></td><td><input type="hidden" th:field="*{helpUserId}" th:value="*{helpUserId}" /> </td></tr>
+    </table>
+    <button type="submit" class="btn btn-info col-2">Set info</button> 
+    
+    <a th:href="@{/prof/dashboard}" class="btn btn-primary col-2"> Cancel</a>
+
+    
+    <span th:utext="${errorMessage}"></span>
+</form>
+</body>
+</html>
